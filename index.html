@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Chapiteau EDC Gabon</title>
+  <title>Salle de conférence EDC Gabon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -78,12 +78,10 @@
     .app {
       height: 100%;
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr)
+      grid-template-columns: 340px minmax(0, 1fr)
     }
 
     .panel {
-      width: 340px;
-      transition: margin .3s ease, visibility 0s .3s;
       background: var(--panel);
       border-right: 1px solid var(--line);
       overflow-y: auto;
@@ -94,15 +92,6 @@
       display: flex;
       flex-direction: column;
       gap: 24px
-    }
-
-    .app.collapsed .panel {
-      margin-left: -340px;
-      visibility: hidden
-    }
-
-    .app:not(.collapsed) .panel {
-      transition: margin .3s ease, visibility 0s
     }
 
     .eyebrow {
@@ -252,6 +241,22 @@
       text-align: right
     }
 
+    .notes {
+      margin: 0;
+      padding-left: 12px;
+      border-left: 2px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45
+    }
+
+    .notes p {
+      margin: 0
+    }
+
     .hint {
       font-size: 12px;
       color: var(--muted);
@@ -275,37 +280,10 @@
       outline: none
     }
 
-    .paneltoggle {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 2;
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      appearance: none;
-      border: 0;
-      border-radius: 6px;
-      background: var(--tag-bg);
-      color: var(--tag-fg);
-      cursor: pointer
-    }
-
-    .paneltoggle svg {
-      width: 18px;
-      height: 18px;
-      transition: transform .3s ease
-    }
-
-    .app.collapsed .paneltoggle svg {
-      transform: scaleX(-1)
-    }
-
     .viewchip {
       position: absolute;
       top: 12px;
-      left: 54px;
+      left: 12px;
       background: var(--tag-bg);
       color: var(--tag-fg);
       font: 600 12px/1 var(--display);
@@ -364,8 +342,7 @@
 
       .panel {
         order: 2;
-        width: auto;
-        height: 46vh;
+        max-height: 46vh;
         border-right: 0;
         border-top: 1px solid var(--line);
         padding-block: 16px 20px;
@@ -374,29 +351,13 @@
         gap: 18px
       }
 
-      .app.collapsed .panel {
-        margin-left: 0;
-        margin-bottom: -46vh
-      }
-
-      .paneltoggle svg {
-        transform: rotate(-90deg)
-      }
-
-      .app.collapsed .paneltoggle svg {
-        transform: rotate(90deg)
-      }
-
       h1 {
         font-size: 19px
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .vbtn,
-      .panel,
-      .app:not(.collapsed) .panel,
-      .paneltoggle svg {
+      .vbtn {
         transition: none
       }
     }
@@ -405,12 +366,13 @@
 
 <body>
 
-  <div class="app" id="app">
-    <aside class="panel" id="panel" aria-label="Commandes et fiche technique">
+  <div class="app">
+    <aside class="panel" aria-label="Commandes et fiche technique">
       <header>
-        <p class="eyebrow">Ouverture officielle</p>
-        <h1>Chapiteau EDC Asset Management Gabon</h1>
-        <p class="lede">Chapiteau de 40 m × 5 m, 150 places assises. Tournez autour du modèle ou choisissez une vue.</p>
+        <p class="eyebrow">Maquette 3D · Ouverture officielle</p>
+        <h1>Salle de conférence EDC Asset Management Gabon</h1>
+        <p class="lede">Salle de réception de 23 × 28 m, 4 blocs de chaises à housses bleues. Tournez autour du modèle
+          ou choisissez une vue.</p>
       </header>
 
       <section>
@@ -422,8 +384,8 @@
       <section>
         <h2>Affichage</h2>
         <div class="row">
-          <span class="lbl">Chapiteau</span>
-          <div class="seg" role="group" aria-label="Affichage du chapiteau">
+          <span class="lbl">Salle</span>
+          <div class="seg" role="group" aria-label="Affichage de la salle">
             <button type="button" id="modeFull" aria-pressed="false">Complet</button>
             <button type="button" id="modeCut" aria-pressed="true">En coupe</button>
           </div>
@@ -437,35 +399,48 @@
       <section>
         <h2>Fiche technique</h2>
         <dl class="spec">
-          <dt>Chapiteau</dt>
-          <dd>40 × 5 m · murs 3,5 m · faîtage 5 m</dd>
-          <dt>Habillage</dt>
-          <dd>rideaux blancs plissés · panneaux bleus · cantonnière</dd>
+          <dt>Salle</dt>
+          <dd>23 × 28 m · plafond 4,2 m (estimé)</dd>
+          <dt>Murs</dt>
+          <dd>gris taupe · fond de scène crème · portes rouge brun</dd>
+          <dt>Sol</dt>
+          <dd>moquette hexagonale bleu et or · bande de marbre 2,7 m</dd>
+          <dt>Plafond</dt>
+          <dd>caissons lumineux · 8 lustres à globes · spots</dd>
+          <dt>Piliers</dt>
+          <dd>3 piliers habillés de bois</dd>
+          <dt>Chaises à housse bleue</dt>
+          <dd id="sChairs">–</dd>
+          <dt>Allées</dt>
+          <dd>3 · centrale 1,6 m · latérales 1,1 m</dd>
           <dt>Estrade (collée au fond)</dt>
           <dd>5 × 3 m · h 0,60 m · 1 marche</dd>
           <dt>Écran LED (sur l'estrade)</dt>
           <dd>4 × 3 m = 12 m²</dd>
           <dt>Pupitre</dt>
           <dd>1 · côté droit de l'estrade</dd>
-          <dt>Sol</dt>
-          <dd>vert 2 m · bleu 1 m · vert 2 m</dd>
-          <dt>Chaises noires capitonnées</dt>
-          <dd id="sChairs">–</dd>
-          <dt>Petites allées</dt>
-          <dd>3 par côté · tous les 4 rangs</dd>
-          <dt>Mange-debout</dt>
-          <dd id="sTables">–</dd>
-          <dt>Climatiseurs</dt>
+          <dt>Espace photo (fond de salle)</dt>
+          <dd>mur 3 × 2,4 m · tapis noir 3 × 2 m</dd>
+          <dt>Vidéoprojecteur</dt>
+          <dd>1 · suspendu au plafond</dd>
+          <dt>Enceintes sur pieds</dt>
+          <dd>2 · de chaque côté du fond</dd>
+          <dt>Climatiseurs (2 par côté + 2 au fond)</dt>
           <dd id="sAC">–</dd>
           <dt>Roll-up</dt>
           <dd id="sRoll">–</dd>
-          <dt>Arche d'entrée</dt>
-          <dd>6,6 × 4,2 m</dd>
-          <dt>Bar (à gauche)</dt>
-          <dd>comptoir 2,2 m</dd>
-          <dt>Espace photo (à droite)</dt>
-          <dd>mur 3 × 2,4 m · tapis noir 3 × 2 m</dd>
         </dl>
+      </section>
+
+      <section>
+        <h2>À valider</h2>
+        <div class="notes">
+          <p>Dimensions et positions estimées à partir des photos de la salle. À corriger avec les mesures réelles
+            (largeur, profondeur, hauteur sous plafond).</p>
+          <p>Quatre blocs de chaises séparés par trois allées, avec les housses bleues des photos. Le nombre de colonnes
+            et de rangées se règle dans le code (BLOCKS, ROWS).</p>
+          <p>Logo officiel EDC conservé sur l'écran LED et les roll-up.</p>
+        </div>
       </section>
 
       <p class="hint">Glisser pour tourner · molette ou pincement pour zoomer · clic droit ou deux doigts pour déplacer.
@@ -473,37 +448,12 @@
     </aside>
 
     <main class="stage" id="stage">
-      <div class="loading" id="loading">Montage du chapiteau…</div>
+      <div class="loading" id="loading">Montage de la salle…</div>
       <div class="tags" id="tags"></div>
-      <button class="paneltoggle" id="panelToggle" type="button" aria-controls="panel" aria-expanded="true"
-        aria-label="Masquer le panneau" title="Masquer le panneau">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" aria-hidden="true">
-          <path d="M15 6l-6 6 6 6" />
-        </svg>
-      </button>
       <div class="viewchip" id="viewchip">Vue d'ensemble</div>
     </main>
   </div>
 
-  <script>
-    /* Panneau rétractable (état mémorisé pour ce navigateur) */
-    (function () {
-      const app = document.getElementById('app'), panel = document.getElementById('panel'), btn = document.getElementById('panelToggle');
-      function setCollapsed(c) {
-        app.classList.toggle('collapsed', c);
-        panel.inert = c;
-        const label = c ? 'Afficher le panneau' : 'Masquer le panneau';
-        btn.setAttribute('aria-expanded', String(!c));
-        btn.setAttribute('aria-label', label); btn.title = label;
-        try { localStorage.setItem('edc-panel-collapsed', c ? '1' : '0'); } catch (e) { }
-      }
-      let saved = null;
-      try { saved = localStorage.getItem('edc-panel-collapsed'); } catch (e) { }
-      if (saved === '1') setCollapsed(true);
-      btn.onclick = () => setCollapsed(!app.classList.contains('collapsed'));
-    })();
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script>
@@ -573,62 +523,82 @@
         for (let i = 0; i < n; i++) { g.fillStyle = colors[(Math.random() * colors.length) | 0]; g.fillRect(Math.random() * w, Math.random() * h, sw, sh); }
       }
 
-      const texGrass = canvasTex(256, 256, (g, w, h) => {
-        g.fillStyle = '#3d8a3a'; g.fillRect(0, 0, w, h);
-        noise(g, w, h, 5200, ['#2f7530', '#4a9a44', '#367f34', '#56a64c', '#2a6a2b'], 1, 3);
-      }, [2, 40]);
-      const texBlue = canvasTex(128, 128, (g, w, h) => {
-        g.fillStyle = LOGO_BLUE; g.fillRect(0, 0, w, h);
-        noise(g, w, h, 2400, ['#1678ad', '#1c8cc9', '#177fb6'], 1, 1);
-      }, [1, 40]);
+      /* ---------- Textures ---------- */
       const texPave = canvasTex(256, 256, (g, w, h) => {
         g.fillStyle = '#c6c5bd'; g.fillRect(0, 0, w, h);
         noise(g, w, h, 3000, ['#bdbcb3', '#cfcec6', '#b5b4ab'], 2, 2);
         g.fillStyle = '#a8a79e'; g.fillRect(0, 0, w, 3); g.fillRect(0, 0, 3, h);
       }, [80, 80]);
-      const texPleat = canvasTex(64, 4, (g, w, h) => {
-        const gr = g.createLinearGradient(0, 0, w, 0);
-        gr.addColorStop(0, '#ffffff'); gr.addColorStop(.5, '#e2e2dc'); gr.addColorStop(1, '#ffffff');
-        g.fillStyle = gr; g.fillRect(0, 0, w, h);
-      }, [160, 1]);
-      // Plafond : voile blanc plissé (plis du mur vers le faîtage)
-      const texCeil = canvasTex(64, 4, (g, w, h) => {
-        const gr = g.createLinearGradient(0, 0, w, 0);
-        gr.addColorStop(0, '#ffffff'); gr.addColorStop(.45, '#ececE6'); gr.addColorStop(.55, '#e4e4de'); gr.addColorStop(1, '#ffffff');
-        g.fillStyle = gr; g.fillRect(0, 0, w, h);
+
+      // Moquette : hexagones bleus cernés d'or (motif de la salle)
+      const texCarpet = canvasTex(112, 194, (g, w, h) => {
+        g.fillStyle = '#1b6592'; g.fillRect(0, 0, w, h);
+        const R = 64.66;
+        const hex = (cx, cy, r) => {
+          g.beginPath();
+          for (let k = 0; k < 6; k++) { const a = Math.PI / 2 + k * Math.PI / 3; const x = cx + r * Math.cos(a), y = cy + r * Math.sin(a); k ? g.lineTo(x, y) : g.moveTo(x, y); }
+          g.closePath();
+        };
+        for (const [cx, cy] of [[0, 0], [112, 0], [56, 97], [0, 194], [112, 194]]) {
+          hex(cx, cy, R * 0.94); g.fillStyle = '#14507a'; g.fill(); g.lineWidth = 5; g.strokeStyle = '#c9ad52'; g.stroke();
+          hex(cx, cy, R * 0.62); g.lineWidth = 3; g.strokeStyle = '#2f93bd'; g.stroke();
+        }
+      }, [36, 29]);
+
+      // Marbre gris veiné (bande latérale)
+      const texMarble = canvasTex(512, 512, (g, w, h) => {
+        g.fillStyle = '#bab8b4'; g.fillRect(0, 0, w, h);
+        noise(g, w, h, 2500, ['#c4c2be', '#b0aeaa', '#bfbdb9'], 3, 3);
+        for (let i = 0; i < 22; i++) {
+          g.strokeStyle = i % 3 ? 'rgba(70,70,76,.28)' : 'rgba(235,235,235,.35)';
+          g.lineWidth = 1 + Math.random() * 3; g.beginPath();
+          let x = Math.random() * w, y = Math.random() * h; g.moveTo(x, y);
+          for (let s = 0; s < 5; s++) { x += (Math.random() - .3) * 160; y += 50 + Math.random() * 110; g.quadraticCurveTo(x + (Math.random() - .5) * 90, y - 60, x, y); }
+          g.stroke();
+        }
+      }, [0.9, 9]);
+
+      // Piliers habillés de bois, 3 panneaux
+      const texWood = canvasTex(128, 256, (g, w, h) => {
+        g.fillStyle = '#a55c2a'; g.fillRect(0, 0, w, h);
+        for (let i = 0; i < 90; i++) { g.fillStyle = i % 2 ? 'rgba(120,60,20,.22)' : 'rgba(220,140,70,.16)'; g.fillRect(Math.random() * w, 0, 1 + Math.random() * 2, h); }
+        g.fillStyle = 'rgba(40,20,10,.7)'; g.fillRect(0, 84, w, 3); g.fillRect(0, 170, w, 3);
       });
-      texCeil.wrapS = texCeil.wrapT = THREE.RepeatWrapping;
-      // Panneau de rideau bleu plissé, éclairé par le bas
-      function blueDrape() {
-        return canvasTex(64, 256, (g, w, h) => {
-          const v = g.createLinearGradient(0, h, 0, 0);
-          v.addColorStop(0, '#45a6dc'); v.addColorStop(.35, LOGO_BLUE); v.addColorStop(1, '#126a9a');
-          g.fillStyle = v; g.fillRect(0, 0, w, h);
-          const p = g.createLinearGradient(0, 0, w, 0);
-          p.addColorStop(0, 'rgba(255,255,255,.16)'); p.addColorStop(.5, 'rgba(0,0,0,.28)'); p.addColorStop(1, 'rgba(255,255,255,.16)');
-          g.fillStyle = p; g.fillRect(0, 0, w, h);
+      // Panneau à lattes bois / blanc (coins de la salle)
+      const texSlat = canvasTex(256, 64, (g, w, h) => {
+        for (let x = 0; x < w; x += 32) { g.fillStyle = (x / 32) % 2 ? '#efefec' : '#9a5a2d'; g.fillRect(x, 0, 32, h); }
+      });
+      // Portes : cadre gris, vantaux rouge brun
+      function doorTex(leaves, wood) {
+        return canvasTex(leaves * 200, 520, (g, w, h) => {
+          g.fillStyle = '#686c71'; g.fillRect(0, 0, w, h);
+          const lw = (w - 20) / leaves;
+          for (let i = 0; i < leaves; i++) {
+            const x0 = 10 + i * lw;
+            g.fillStyle = wood ? '#5a2a20' : '#7b2c25'; g.fillRect(x0 + 5, 10, lw - 10, h - 10);
+            g.fillStyle = '#686c71';
+            g.fillRect(x0 + lw * 0.40, h * 0.30, lw * 0.20, h * 0.70);
+            g.fillRect(x0 + lw * 0.28, h * 0.30, lw * 0.44, 16);
+          }
+          g.fillStyle = '#d5d8da'; g.fillRect(w / 2 - 4, h * 0.52, 8, 50);
         });
       }
-      // Cantonnière : bande plissée à festons (transparente sous les festons)
-      const texValance = canvasTex(256, 128, (g, w, h) => {
-        g.clearRect(0, 0, w, h);
-        g.beginPath(); g.moveTo(0, 0); g.lineTo(w, 0); g.lineTo(w, h * 0.42);
-        g.quadraticCurveTo(w / 2, h * 1.15, 0, h * 0.42); g.closePath();
-        const p = g.createLinearGradient(0, 0, w, 0);
-        for (let i = 0; i <= 8; i++) p.addColorStop(i / 8, i % 2 ? '#e6e6e0' : '#ffffff');
-        g.fillStyle = p; g.fill();
-        g.strokeStyle = 'rgba(0,0,0,.08)'; g.lineWidth = 3; g.stroke();
+      const texDoor2 = doorTex(2, false), texDoor1 = doorTex(1, true);
+      const texGlass = canvasTex(64, 256, (g, w, h) => {
+        const gr = g.createLinearGradient(0, 0, 0, h);
+        gr.addColorStop(0, '#e9f6ff'); gr.addColorStop(1, '#bfe1f5');
+        g.fillStyle = gr; g.fillRect(0, 0, w, h);
       });
-      texValance.wrapS = THREE.RepeatWrapping;
-      const texTuft = canvasTex(128, 128, (g, w, h) => {
-        g.fillStyle = '#1c1c21'; g.fillRect(0, 0, w, h);
-        g.strokeStyle = '#2d2d34'; g.lineWidth = 3;
-        for (let c = -128; c <= 256; c += 64) {
-          g.beginPath(); g.moveTo(c, 0); g.lineTo(c + 128, 128); g.stroke();
-          g.beginPath(); g.moveTo(c, 0); g.lineTo(c - 128, 128); g.stroke();
-        }
-        g.fillStyle = '#0b0b0d';
-        for (let x = 0; x <= 128; x += 32) for (let y = 0; y <= 128; y += 32) if ((x + y) % 64 === 0) { g.beginPath(); g.arc(x, y, 4, 0, Math.PI * 2); g.fill(); }
+      const texCream = canvasTex(4, 256, (g, w, h) => {
+        const gr = g.createLinearGradient(0, 0, 0, h);
+        gr.addColorStop(0, '#d9cba6'); gr.addColorStop(.55, '#efe2c0'); gr.addColorStop(1, '#e6d8b4');
+        g.fillStyle = gr; g.fillRect(0, 0, w, h);
+      });
+      const texLattice = canvasTex(128, 64, (g, w, h) => {
+        g.fillStyle = '#8f9aa6'; g.fillRect(0, 0, w, h);
+        g.strokeStyle = '#e8eef3'; g.lineWidth = 3;
+        for (let x = 0; x <= w; x += 16) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, h); g.stroke(); }
+        for (let y = 0; y <= h; y += 16) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
       });
       const texGrille = canvasTex(128, 448, (g, w, h) => {
         g.fillStyle = '#f3f4f3'; g.fillRect(0, 0, w, h);
@@ -649,19 +619,7 @@
         fitText(g, 'EDC Asset Management Gabon', '500', 30, 340); g.fillText('EDC Asset Management Gabon', w / 2, 740);
         g.globalAlpha = .5; g.fillRect(40, 900, w - 80, 3); g.globalAlpha = 1;
       });
-      const texPillar = canvasTex(280, 1320, (g, w, h) => {
-        blueBg(g, w, h);
-        drawLogo(g, w / 2, 330, 230, 330);
-      });
-      const texHeader = canvasTex(2200, 300, (g, w, h) => {
-        blueBg(g, w, h);
-        g.fillStyle = '#ffffff'; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
-        const l1 = "Bienvenue à l'ouverture officielle du bureau de";
-        const l2 = 'EDC ASSET MANAGEMENT GABON';
-        fitText(g, l1, '500', 70, 2050); g.fillText(l1, w / 2, 125);
-        fitText(g, l2, '800', 92, 2050); g.fillText(l2, w / 2, 235);
-      });
-      const texHeaderBack = canvasTex(2200, 300, (g, w, h) => { blueBg(g, w, h); drawLogo(g, w / 2, h / 2, 900, 270); });
+
       const texBarPanel = canvasTex(500, 400, (g, w, h) => { blueBg(g, w, h); drawLogo(g, w / 2, h / 2, 400, 350); });
       const texBackdrop = canvasTex(1200, 960, (g, w, h) => {
         blueBg(g, w, h);
@@ -674,22 +632,24 @@
       /* ---------- Matériaux ---------- */
       const std = (color, rough = .8, metal = 0, extra = {}) => new THREE.MeshStandardMaterial(Object.assign({ color, roughness: rough, metalness: metal }, extra));
       const M = {
-        fabric: std(0xf5f5f1, .92, 0, { side: THREE.DoubleSide }),
-        wall: std(0xffffff, .92, 0, { side: THREE.DoubleSide, map: texPleat }),
         metal: std(0xc9ccd2, .35, .75),
         black: std(0x17181c, .85),
         stageEdge: std(0x8b919c, .4, .6),
-        blue: std(0x1983bd, .7),
         white: std(0xf4f5f4, .45),
         gloss: std(0xffffff, .18, 0),
-        tableCloth: std(0xf7f7f5, .88, 0, { side: THREE.DoubleSide }),
-        chairBody: std(0x0d0d0f, .6, .05),
-        chairBack: std(0xffffff, .55, .05, { map: texTuft }),
-        leg: std(0x2a2522, .6, .1),
-        grass: std(0xffffff, .95, 0, { map: texGrass }),
-        carpetBlue: std(0xffffff, .9, 0, { map: texBlue }),
-        carpetBlack: std(0x101012, .95),
+        chair: std(0x0a24a8, .7, 0),            // housses bleues extensibles
+        carpet: std(0xffffff, .95, 0, { map: texCarpet }),
+        marble: std(0xffffff, .35, .05, { map: texMarble }),
         pave: std(0xffffff, .95, 0, { map: texPave }),
+        wall: std(0x7a746b, .93, 0, { side: THREE.DoubleSide }),
+        cream: std(0xffffff, .9, 0, { side: THREE.DoubleSide, map: texCream }),
+        wood: std(0xffffff, .6, 0, { map: texWood }),
+        ceil: std(0x58544e, .95, 0, { side: THREE.DoubleSide }),
+        soffit: std(0x66625b, .9),
+        dark: std(0x2c2b2a, .85),
+        cove: new THREE.MeshBasicMaterial({ color: 0xf3e4c2, toneMapped: false }),
+        globe: new THREE.MeshBasicMaterial({ color: 0xfff6d8, toneMapped: false }),
+        spot: new THREE.MeshBasicMaterial({ color: 0xffffff, toneMapped: false, side: THREE.DoubleSide }),
       };
 
       /* ---------- Lumières et décor ---------- */
@@ -698,156 +658,165 @@
         gr.addColorStop(0, '#8fb8de'); gr.addColorStop(.62, '#d6e4ee'); gr.addColorStop(1, '#eef2f2');
         g.fillStyle = gr; g.fillRect(0, 0, w, h);
       });
-      scene.fog = new THREE.Fog(0xdde6ec, 70, 170);
-      scene.add(new THREE.HemisphereLight(0xffffff, 0x8f9486, 0.75));
-      const sun = new THREE.DirectionalLight(0xfff3e2, 1.25);
-      sun.position.set(-18, 34, 22); sun.target.position.set(0, 0, 3);
+      scene.fog = new THREE.Fog(0xdde6ec, 80, 190);
+      scene.add(new THREE.HemisphereLight(0xffffff, 0x8f9486, 0.85));
+      const sun = new THREE.DirectionalLight(0xfff3e2, 1.0);
+      sun.position.set(-18, 34, 22); sun.target.position.set(0, 0, 0);
       sun.castShadow = true;
       sun.shadow.mapSize.set(2048, 2048);
-      Object.assign(sun.shadow.camera, { left: -34, right: 34, top: 34, bottom: -34, near: 1, far: 110 });
+      Object.assign(sun.shadow.camera, { left: -24, right: 24, top: 24, bottom: -24, near: 1, far: 110 });
       sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.02;
       scene.add(sun, sun.target);
+      for (const z of [-5, 6]) { const pl = new THREE.PointLight(0xfff0d6, 0.55, 40, 1.5); pl.position.set(0, 3.5, z); scene.add(pl); }
 
       const ground = new THREE.Mesh(new THREE.PlaneGeometry(160, 160), M.pave);
-      ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+      ground.rotation.x = -Math.PI / 2; ground.position.y = -0.2; ground.receiveShadow = true; scene.add(ground);
 
-      const counts = { chairs: { L: 0, R: 0 }, tables: { L: 0, R: 0 }, ac: { L: 0, R: 0 }, roll: { L: 0, R: 0 } };
+      const counts = { chairs: 0, ac: 0, roll: 0, blocks: [] };
 
       /* ---------- Géométrie utilitaire ---------- */
-      function polyMesh(points, mat, uvFn) {
-        const g = new THREE.BufferGeometry();
-        const pos = [], uv = [];
-        for (const p of points) { pos.push(p.x, p.y, p.z); if (uvFn) uv.push(...uvFn(p)); }
-        g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-        if (uvFn) g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
-        g.computeVertexNormals();
-        return new THREE.Mesh(g, mat);
-      }
-      const quad = (a, b, c, d, mat, uvFn) => polyMesh([a, b, c, a, c, d], mat, uvFn);
-      const tri = (a, b, c, mat) => polyMesh([a, b, c], mat);
-      function beam(a, b, t, mat) {
-        const d = new THREE.Vector3().subVectors(b, a);
-        const m = new THREE.Mesh(new THREE.BoxGeometry(t, t, d.length()), mat);
-        m.position.copy(a).addScaledVector(d, .5); m.lookAt(b);
-        m.castShadow = true; return m;
-      }
       function box(w, h, d, mat, x, y, z, shadow = true) {
         const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
         m.position.set(x, y, z); m.castShadow = shadow; m.receiveShadow = true; return m;
       }
 
-      /* ---------- Chapiteau : 40 m × 5 m, murs 3,5 m, faîtage 5 m ---------- */
-      const HW = 2.5, Z0 = -20, Z1 = 20, WALL = 3.5, RIDGE = 5.0;
+      /* ---------- La salle : 23 × 28 m, plafond 4,2 m ---------- */
+      const RHW = 11.5, Z0 = -14, Z1 = 14, CEIL = 4.2;
+      const ROOM_W = RHW * 2, ROOM_D = Z1 - Z0;
 
-      // Chaque côté (mur + panneaux bleus + cantonnière) est un groupe, pour la vue en coupe
-      const blueTex = (rep) => { const t = blueDrape(); t.wrapS = THREE.RepeatWrapping; t.repeat.set(rep, 1); return t; };
-      const panelMat = new THREE.MeshStandardMaterial({ map: blueTex(4), roughness: .85, side: THREE.DoubleSide });
-      function valance(len) {
-        const t = texValance.clone(); t.needsUpdate = true; t.wrapS = THREE.RepeatWrapping; t.repeat.set(Math.round(len / 1.25), 1);
-        return new THREE.Mesh(new THREE.PlaneGeometry(len, 0.5), new THREE.MeshStandardMaterial({ map: t, alphaTest: .5, roughness: .9, side: THREE.DoubleSide }));
-      }
-      function sideWall(s) {
-        const g = new THREE.Group();
-        const w = new THREE.Mesh(new THREE.PlaneGeometry(40, WALL), M.wall);
-        w.position.set(s * HW, WALL / 2, 0); w.rotation.y = s < 0 ? Math.PI / 2 : -Math.PI / 2; g.add(w);
-        for (let z = Z0 + 5; z < Z1; z += 5) {
-          const p = new THREE.Mesh(new THREE.PlaneGeometry(1.0, WALL), panelMat);
-          p.position.set(s * (HW - 0.012), WALL / 2, z); p.rotation.y = w.rotation.y; g.add(p);
-        }
-        const v = valance(40); v.position.set(s * (HW - 0.025), WALL - 0.25, 0); v.rotation.y = w.rotation.y; g.add(v);
-        return g;
-      }
-      const wallL = sideWall(-1), wallR = sideWall(1);
-      const back = new THREE.Group();
-      const backPlane = new THREE.Mesh(new THREE.PlaneGeometry(5, WALL), M.fabric); backPlane.position.set(0, WALL / 2, Z0);
-      // Rideau bleu de fond derrière l'écran
-      const backDrape = new THREE.Mesh(new THREE.PlaneGeometry(5, WALL), new THREE.MeshStandardMaterial({ map: blueTex(20), roughness: .85 }));
-      backDrape.position.set(0, WALL / 2, Z0 + 0.02);
-      back.add(backPlane, backDrape);
+      // Dalle et sols
+      scene.add(box(ROOM_W + 0.4, 0.2, ROOM_D + 0.4, std(0x8d8f93, .9), 0, -0.1, 0, false));
+      const MARBLE_W = 2.7, CARPET_W = ROOM_W - MARBLE_W;
+      const carpet = new THREE.Mesh(new THREE.PlaneGeometry(CARPET_W, ROOM_D), M.carpet);
+      carpet.rotation.x = -Math.PI / 2; carpet.position.set(-RHW + CARPET_W / 2, 0.006, 0); carpet.receiveShadow = true; scene.add(carpet);
+      const marble = new THREE.Mesh(new THREE.PlaneGeometry(MARBLE_W, ROOM_D), M.marble);
+      marble.rotation.x = -Math.PI / 2; marble.position.set(RHW - MARBLE_W / 2, 0.006, 0); marble.receiveShadow = true; scene.add(marble);
 
-      // Plafond : voile blanc plissé
-      const ceilMat = std(0xffffff, .92, 0, { side: THREE.DoubleSide, map: texCeil });
-      const ceilUV = p => [(p.z - Z0) / 0.32, Math.abs(p.x) / HW];
+      // Murs : chaque côté est un groupe (vue en coupe)
+      const wallL = new THREE.Group(), wallR = new THREE.Group(), front = new THREE.Group(), rear = new THREE.Group();
+      function wallPlane(len, h, x, y, z, ry, mat) {
+        const m = new THREE.Mesh(new THREE.PlaneGeometry(len, h), mat);
+        m.position.set(x, y, z); m.rotation.y = ry; m.receiveShadow = true; return m;
+      }
+      wallL.add(wallPlane(ROOM_D, CEIL, -RHW, CEIL / 2, 0, Math.PI / 2, M.wall));
+      wallR.add(wallPlane(ROOM_D, CEIL, RHW, CEIL / 2, 0, -Math.PI / 2, M.wall));
+      front.add(wallPlane(ROOM_W, CEIL, 0, CEIL / 2, Z0, 0, M.wall));
+      rear.add(wallPlane(ROOM_W, CEIL, 0, CEIL / 2, Z1, Math.PI, M.wall));
+      // Mur de fond de scène : panneau crème central
+      front.add(wallPlane(15, CEIL, 0, CEIL / 2, Z0 + 0.02, 0, M.cream));
+
+      const slatMat = new THREE.MeshStandardMaterial({ map: texSlat, roughness: .6 });
+      wallR.add(wallPlane(1.7, 3.6, RHW - 0.02, 1.8, -13.05, -Math.PI / 2, slatMat));
+      wallL.add(wallPlane(1.7, 3.6, -RHW + 0.02, 1.8, -13.05, Math.PI / 2, slatMat));
+      const door2Mat = new THREE.MeshStandardMaterial({ map: texDoor2, roughness: .6 });
+      const door1Mat = new THREE.MeshStandardMaterial({ map: texDoor1, roughness: .6 });
+      wallR.add(wallPlane(2.4, 2.6, RHW - 0.02, 1.3, 10.0, -Math.PI / 2, door2Mat));   // double porte
+      wallR.add(wallPlane(1.1, 2.3, RHW - 0.02, 1.15, -4.5, -Math.PI / 2, door1Mat));  // petite porte
+      front.add(wallPlane(1.3, 2.4, 9.0, 1.2, Z0 + 0.03, 0, door1Mat));
+      front.add(wallPlane(1.3, 2.4, -9.0, 1.2, Z0 + 0.03, 0, door1Mat));
+      // Porte vitrée au fond
+      const glassDoor = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 2.7), new THREE.MeshBasicMaterial({ map: texGlass, toneMapped: false }));
+      glassDoor.position.set(4, 1.35, Z1 - 0.03); glassDoor.rotation.y = Math.PI;
+      rear.add(glassDoor, box(2.8, 0.1, 0.08, M.black, 4, 2.72, Z1 - 0.04, false));
+      scene.add(wallL, wallR, front, rear);
+
+      /* ---------- Plafond : caissons, lustres à globes, spots, vidéoprojecteur ---------- */
       const roof = new THREE.Group();
-      roof.add(quad(V(-HW, WALL, Z1), V(0, RIDGE, Z1), V(0, RIDGE, Z0), V(-HW, WALL, Z0), ceilMat, ceilUV));
-      roof.add(quad(V(HW, WALL, Z0), V(0, RIDGE, Z0), V(0, RIDGE, Z1), V(HW, WALL, Z1), ceilMat, ceilUV));
-      const gables = new THREE.Group();
-      gables.add(tri(V(-HW, WALL, Z0), V(HW, WALL, Z0), V(0, RIDGE, Z0), M.fabric));
-      gables.add(tri(V(-HW, WALL, Z1), V(HW, WALL, Z1), V(0, RIDGE, Z1), M.fabric));
-      scene.add(wallL, wallR, back, roof, gables);
-
-      // Entrée : cantonnière et rideaux blancs noués de chaque côté
-      const frontVal = valance(5); frontVal.position.set(0, WALL - 0.25, Z1 - 0.03); scene.add(frontVal);
-      const curtTex = texPleat.clone(); curtTex.needsUpdate = true; curtTex.wrapS = THREE.RepeatWrapping; curtTex.repeat.set(5, 1);
-      const curtMat = new THREE.MeshStandardMaterial({ map: curtTex, roughness: .9, side: THREE.DoubleSide });
-      const TIE = 1.1;
-      function tiedCurtain() {
-        const geo = new THREE.PlaneGeometry(0.8, WALL, 1, 28);
-        const a = geo.attributes.position;
-        for (let i = 0; i < a.count; i++) {
-          const x = a.getX(i), yy = a.getY(i) + WALL / 2;
-          const k = yy > TIE ? 0.2 + 0.8 * Math.pow((yy - TIE) / (WALL - TIE), 0.8) : 0.2 + 0.25 * ((TIE - yy) / TIE);
-          a.setX(i, 0.4 - (0.4 - x) * k);
+      const ceil = new THREE.Mesh(new THREE.PlaneGeometry(ROOM_W, ROOM_D), M.ceil);
+      ceil.rotation.x = Math.PI / 2; ceil.position.set(0, CEIL, 0); roof.add(ceil);
+      function soffit(cx, cz, w, l, drop, body, stripW) {
+        roof.add(box(w, drop, l, body, cx, CEIL - drop / 2, cz, false));
+        if (stripW) {
+          const s = new THREE.Mesh(new THREE.PlaneGeometry(stripW < w ? stripW : w, l), M.cove);
+          s.rotation.x = Math.PI / 2; s.position.set(cx, CEIL - drop - 0.004, cz); roof.add(s);
         }
-        geo.computeVertexNormals();
-        const g = new THREE.Group();
-        const m = new THREE.Mesh(geo, curtMat); m.position.y = WALL / 2; m.castShadow = true; g.add(m);
-        g.add(box(0.2, 0.06, 0.06, std(0x1983bd, .6), 0.3, TIE, 0.02, false));
-        return g;
       }
+      // poutre centrale sombre + bandes lumineuses de chaque côté
+      roof.add(box(1.0, 0.3, ROOM_D - 1, M.dark, 0, CEIL - 0.15, 0, false));
       for (const s of [-1, 1]) {
-        const c = tiedCurtain();
-        c.position.set(s * (HW - 0.42), 0, Z1 - 0.06); if (s < 0) c.rotation.y = Math.PI;
-        scene.add(c);
+        soffit(s * 2.2, 0, 0.8, ROOM_D - 1, 0.15, M.soffit, 0.6);
+        soffit(s * (RHW - 0.55), 0, 1.1, ROOM_D, 0.4, M.soffit, 0.55);
       }
-
-      const frame = new THREE.Group();
-      for (let z = Z0; z <= Z1; z += 5) {
-        frame.add(box(0.08, WALL, 0.08, M.metal, -HW - 0.05, WALL / 2, z));
-        frame.add(box(0.08, WALL, 0.08, M.metal, HW + 0.05, WALL / 2, z));
-        frame.add(beam(V(-HW, WALL - 0.04, z), V(0, RIDGE - 0.06, z), 0.07, M.metal));
-        frame.add(beam(V(HW, WALL - 0.04, z), V(0, RIDGE - 0.06, z), 0.07, M.metal));
-      }
-      frame.add(beam(V(0, RIDGE - 0.08, Z0), V(0, RIDGE - 0.08, Z1), 0.07, M.metal));
-      frame.add(beam(V(-HW, WALL - 0.05, Z0), V(-HW, WALL - 0.05, Z1), 0.06, M.metal));
-      frame.add(beam(V(HW, WALL - 0.05, Z0), V(HW, WALL - 0.05, Z1), 0.06, M.metal));
-      // Barres de projecteurs devant l'estrade
-      for (const z of [-16.3, -11.5]) {
-        frame.add(beam(V(-HW + 0.05, WALL - 0.12, z), V(HW - 0.05, WALL - 0.12, z), 0.06, M.metal));
-        for (const x of [-1.5, 0, 1.5]) {
-          const can = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.07, 0.22, 14), M.black);
-          can.position.set(x, WALL - 0.3, z); can.rotation.x = 0.6; frame.add(can);
+      soffit(0, Z0 + 0.55, ROOM_W, 1.1, 0.4, M.soffit, null);
+      soffit(0, Z1 - 0.55, ROOM_W, 1.1, 0.4, M.soffit, null);
+      // lustres carrés à globes blancs
+      const globeGeo = new THREE.SphereGeometry(0.13, 12, 10);
+      const latticeMat = new THREE.MeshBasicMaterial({ map: texLattice, color: 0xcfd8e0 });
+      for (const x of [-6, 6]) for (const z of [-9, -3, 3, 9]) {
+        roof.add(box(2.4, 0.1, 1.3, M.dark, x, CEIL - 0.05, z, false));
+        const lat = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 1.1), latticeMat);
+        lat.rotation.x = Math.PI / 2; lat.position.set(x, CEIL - 0.105, z); roof.add(lat);
+        for (const dx of [-0.8, -0.27, 0.27, 0.8]) for (const dz of [-0.3, 0.3]) {
+          const gl = new THREE.Mesh(globeGeo, M.globe); gl.position.set(x + dx, CEIL - 0.33 - ((dx * dz > 0) ? 0.05 : 0), z + dz); roof.add(gl);
         }
       }
-      scene.add(frame);
-
-      /* ---------- Sol : 2 m vert · 1 m bleu · 2 m vert ---------- */
-      function floorStrip(w, len, x, z, mat, y = 0.01) {
-        const m = new THREE.Mesh(new THREE.PlaneGeometry(w, len), mat);
-        m.rotation.x = -Math.PI / 2; m.position.set(x, y, z); m.receiveShadow = true; scene.add(m); return m;
+      // spots encastrés et diffuseurs
+      const spotGeo = new THREE.CircleGeometry(0.07, 10); spotGeo.rotateX(Math.PI / 2);
+      const diffGeo = new THREE.CircleGeometry(0.17, 16); diffGeo.rotateX(Math.PI / 2);
+      const diffMat = new THREE.MeshBasicMaterial({ color: 0xb9b8b4, side: THREE.DoubleSide });
+      function discs(geo, mat, pts, y) {
+        const im = new THREE.InstancedMesh(geo, mat, pts.length), m4 = new THREE.Matrix4();
+        pts.forEach((p, i) => { m4.makeTranslation(p[0], y, p[1]); im.setMatrixAt(i, m4); });
+        roof.add(im);
       }
-      floorStrip(2, 40, -1.5, 0, M.grass);
-      floorStrip(2, 40, 1.5, 0, M.grass);
-      floorStrip(1, 40, 0, 0, M.carpetBlue, 0.012);
-      const outsideBlue = M.carpetBlue.clone(); outsideBlue.map = texBlue.clone(); outsideBlue.map.needsUpdate = true; outsideBlue.map.repeat.set(1, 8);
-      floorStrip(1, 8.5, 0, 24.25, outsideBlue, 0.012);
+      const spotC = [], spotS = [], diff = [];
+      for (let z = -12.6; z <= 12.7; z += 1.8) spotC.push([0, z]);
+      for (let z = -12; z <= 12; z += 3) for (const x of [-9.2, 9.2, -3.8, 3.8]) spotS.push([x, z]);
+      for (const z of [-9, -4.5, 0, 4.5, 9]) for (const x of [-3.6, 3.6]) diff.push([x, z]);
+      discs(spotGeo, M.spot, spotC, CEIL - 0.304);
+      discs(spotGeo, M.spot, spotS, CEIL - 0.004);
+      discs(diffGeo, diffMat, diff, CEIL - 0.004);
+      // vidéoprojecteur suspendu
+      {
+        const g = new THREE.Group();
+        g.add(box(0.05, 0.28, 0.05, M.metal, 0, 0.2, 0, false));
+        g.add(box(0.42, 0.14, 0.32, M.white, 0, 0, 0, false));
+        const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.06, 12), M.black);
+        lens.rotation.x = Math.PI / 2; lens.position.set(0, 0, -0.18); g.add(lens);
+        g.position.set(0, 3.62, -3); roof.add(g);
+      }
+      scene.add(roof);
 
-      /* ---------- Estrade 5 × 3 m, h 0,60 m, collée au fond, une marche ---------- */
-      const STAGE_H = 0.6, STAGE_Z = -18.5; // de z -20 à -17
-      scene.add(box(5, STAGE_H, 3, M.black, 0, STAGE_H / 2, STAGE_Z));
-      scene.add(box(5, 0.03, 0.03, M.stageEdge, 0, STAGE_H - 0.015, -17.0, false));
-      scene.add(box(1.6, 0.3, 0.36, M.black, 0, 0.15, -16.82));
-      floorStrip(1.0, 0.36, 0, -16.82, M.carpetBlue, 0.302);
+      /* ---------- Piliers habillés de bois ---------- */
+      for (const z of [-5, 1.5, 8]) scene.add(box(0.9, CEIL - 0.3, 0.9, M.wood, -9.9, (CEIL - 0.3) / 2, z));
+
+      /* ---------- Estrade 5 × 3 m, h 0,60 m, collée au mur du fond ---------- */
+      const STAGE_H = 0.6;
+      scene.add(box(5, STAGE_H, 3, M.black, 0, STAGE_H / 2, Z0 + 1.5));
+      scene.add(box(5, 0.03, 0.03, M.stageEdge, 0, STAGE_H - 0.015, Z0 + 3.0, false));
+      scene.add(box(1.6, 0.3, 0.36, M.black, 0, 0.15, Z0 + 3.18));
 
       /* ---------- Écran LED 4 × 3 m posé sur l'estrade ---------- */
       const SCR_Y = STAGE_H + 1.53;
-      scene.add(box(4.14, 3.06, 0.14, M.black, 0, SCR_Y, -19.8));
+      scene.add(box(4.14, 3.06, 0.14, M.black, 0, SCR_Y, Z0 + 0.2));
       const screen = new THREE.Mesh(new THREE.PlaneGeometry(4, 3), new THREE.MeshBasicMaterial({ map: texScreen, toneMapped: false }));
-      screen.position.set(0, SCR_Y, -19.725); scene.add(screen);
-      for (const s of [-1, 1]) scene.add(box(0.08, 0.08, 0.5, M.black, s * 1.6, STAGE_H + 0.04, -19.6));
+      screen.position.set(0, SCR_Y, Z0 + 0.275); scene.add(screen);
+      for (const s of [-1, 1]) scene.add(box(0.08, 0.08, 0.5, M.black, s * 1.6, STAGE_H + 0.04, Z0 + 0.4));
+
+      /* ---------- Enceintes sur pieds et plantes ---------- */
+      function speaker(x, z) {
+        const g = new THREE.Group();
+        const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 1.2, 8), M.black); pole.position.y = 0.6; g.add(pole);
+        g.add(box(0.4, 0.04, 0.4, M.black, 0, 0.02, 0, false));
+        g.add(box(0.28, 0.9, 0.28, M.black, 0, 1.65, 0));
+        g.position.set(x, 0, z); scene.add(g);
+      }
+      speaker(-4.6, Z0 + 0.7); speaker(4.6, Z0 + 0.7);
+      function plant(x, z) {
+        const g = new THREE.Group();
+        const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.24, 0.5, 18), std(0xe8e1cf, .8)); pot.position.y = 0.25; pot.castShadow = true; g.add(pot);
+        const leafMat = std(0x3f7a3c, .7, 0, { side: THREE.DoubleSide });
+        for (let i = 0; i < 11; i++) {
+          const a = i / 11 * Math.PI * 2, tilt = 0.25 + ((i * 37) % 10) / 40;
+          const leaf = new THREE.Mesh(new THREE.ConeGeometry(0.07, 1.05 + ((i * 13) % 5) * 0.08, 6), leafMat);
+          leaf.position.set(Math.cos(a) * 0.12, 0.95, Math.sin(a) * 0.12);
+          leaf.rotation.set(Math.sin(a) * tilt, 0, -Math.cos(a) * tilt); leaf.castShadow = true; g.add(leaf);
+        }
+        g.position.set(x, 0, z); scene.add(g);
+      }
+      plant(8.4, -13.2); plant(10.5, 6.9); plant(-10.6, -12.4);
 
       /* ---------- Pupitre : côté droit de l'estrade (vu du public) ---------- */
-      const PUP = V(1.7, STAGE_H, -17.6);
       {
         const g = new THREE.Group();
         g.add(box(0.6, 1.05, 0.42, M.white, 0, 0.525, 0));
@@ -856,162 +825,97 @@
         const top = box(0.66, 0.04, 0.5, M.gloss, 0, 1.1, 0.02); top.rotation.x = -0.28; g.add(top);
         const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.38, 6), M.black);
         neck.position.set(0.2, 1.3, 0.0); neck.rotation.x = 0.45; g.add(neck);
-        g.position.copy(PUP); scene.add(g);
+        g.position.set(1.7, STAGE_H, Z0 + 2.4); scene.add(g);
       }
 
-      /* ---------- Chaises noires capitonnées : 4 par rangée, 75 par côté ---------- */
-      // Tous les 4 rangs : une petite allée (climatiseur + roll-up au mur). 3 allées, puis les derniers rangs groupés.
-      const ROWS = 19, PER_ROW = 4, PER_SIDE = 75, ROW_PITCH = 0.9, FIRST_ROW_Z = -15.6;
-      const GAP_EVERY = 4, GAP_EXTRA = 1.4, GAPS = 3;
-      const rowZ = r => FIRST_ROW_Z + r * ROW_PITCH + Math.min(GAPS, Math.floor(r / GAP_EVERY)) * GAP_EXTRA;
-      const seatGeo = new THREE.BoxGeometry(0.46, 0.12, 0.46); seatGeo.translate(0, 0.44, 0);
-      const backGeo = new THREE.BoxGeometry(0.46, 0.56, 0.08); backGeo.translate(0, 0.78, 0.2);
-      const legGeo = new THREE.CylinderGeometry(0.018, 0.013, 0.38, 8); legGeo.translate(0, 0.19, 0);
-      const seats = new THREE.InstancedMesh(seatGeo, M.chairBody, PER_SIDE * 2);
-      const backs = new THREE.InstancedMesh(backGeo, M.chairBack, PER_SIDE * 2);
-      const legs = new THREE.InstancedMesh(legGeo, M.leg, PER_SIDE * 2 * 4);
-      const mtx = new THREE.Matrix4();
-      let ci = 0, li = 0;
-      for (const side of [-1, 1]) {
-        let n = 0;
-        for (let r = 0; r < ROWS && n < PER_SIDE; r++) {
-          const z = rowZ(r);
-          for (let c = 0; c < PER_ROW && n < PER_SIDE; c++) {
-            const x = side * (0.74 + c * 0.5);
-            mtx.makeTranslation(x, 0, z);
-            seats.setMatrixAt(ci, mtx); backs.setMatrixAt(ci, mtx); ci++;
-            for (const [dx, dz] of [[-.19, -.19], [.19, -.19], [-.19, .19], [.19, .19]]) {
-              mtx.makeTranslation(x + dx, 0, z + dz); legs.setMatrixAt(li++, mtx);
-            }
-            n++;
-          }
-        }
-        counts.chairs[side < 0 ? 'L' : 'R'] = n;
-      }
-      for (const m of [seats, backs, legs]) { m.castShadow = true; m.receiveShadow = true; scene.add(m); }
-      const lastRowZ = rowZ(ROWS - 1);
-
-      /* ---------- Mange-debout (housse blanche) ---------- */
-      const tableGeo = new THREE.LatheGeometry([
-        new THREE.Vector2(0.001, 0), new THREE.Vector2(0.33, 0), new THREE.Vector2(0.30, 0.12),
-        new THREE.Vector2(0.22, 0.45), new THREE.Vector2(0.14, 0.78), new THREE.Vector2(0.13, 0.9),
-        new THREE.Vector2(0.20, 1.02), new THREE.Vector2(0.31, 1.08), new THREE.Vector2(0.32, 1.1),
-        new THREE.Vector2(0.001, 1.1)
-      ], 36);
-      // Taille réduite (plateau ø 0,52 m, hauteur 1,10 m conservée)
-      function cocktailTable(x, z) {
-        const m = new THREE.Mesh(tableGeo, M.tableCloth);
-        m.scale.set(0.8, 1, 0.8);
-        m.position.set(x, 0, z); m.castShadow = true; m.receiveShadow = true; scene.add(m);
-      }
-      // De chaque côté : 4 mange-debout regroupés en rectangle (0,9 m × 1,2 m entre centres)
-      const TABLE_CX = 1.5, TABLE_CZ = 12.0, TABLE_DX = 0.45, TABLE_DZ = 0.6;
-      for (const side of [-1, 1]) for (const dx of [-TABLE_DX, TABLE_DX]) for (const dz of [-TABLE_DZ, TABLE_DZ]) {
-        cocktailTable(side * (TABLE_CX + dx), TABLE_CZ + dz); counts.tables[side < 0 ? 'L' : 'R']++;
-      }
-
-      /* ---------- Climatiseurs armoire (3 par côté) ---------- */
-      const acMats = [M.white, M.white, M.white, M.white, new THREE.MeshStandardMaterial({ map: texGrille, roughness: .5 }), M.white];
-      function airCon(side, z) {
-        const m = new THREE.Mesh(new THREE.BoxGeometry(0.5, 1.75, 0.32), acMats);
-        m.position.set(side * 2.31, 0.875, z); m.rotation.y = side < 0 ? Math.PI / 2 : -Math.PI / 2;
-        m.castShadow = true; m.receiveShadow = true; scene.add(m);
-        counts.ac[side < 0 ? 'L' : 'R']++;
-      }
-      /* ---------- Roll-up (3 par côté) ---------- */
-      const rollMat = new THREE.MeshStandardMaterial({ map: texRoll, roughness: .6 });
-      const rollBackMat = std(0xb9bec6, .6);
-      function rollUp(side, z) {
-        const g = new THREE.Group();
-        g.add(box(0.86, 0.08, 0.24, M.metal, 0, 0.04, 0));
-        const front = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 2.0), rollMat); front.position.set(0, 1.1, 0.02); front.castShadow = true;
-        const rear = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 2.0), rollBackMat); rear.position.set(0, 1.1, 0.015); rear.rotation.y = Math.PI;
-        g.add(front, rear, box(0.82, 0.03, 0.03, M.metal, 0, 2.11, 0.02));
-        g.position.set(side * 2.36, 0, z); g.rotation.y = side < 0 ? Math.PI / 2 : -Math.PI / 2;
-        scene.add(g);
-        counts.roll[side < 0 ? 'L' : 'R']++;
-      }
-      const AC_Z = [], ROLL_Z = [];
-      for (let k = 1; k <= GAPS; k++) { const zb = rowZ(k * GAP_EVERY - 1) + 0.24; AC_Z.push(zb + 0.37); ROLL_Z.push(zb + 1.17); }
-      for (const side of [-1, 1]) { AC_Z.forEach(z => airCon(side, z)); ROLL_Z.forEach(z => rollUp(side, z)); }
-      const GAP1_Z = rowZ(GAP_EVERY - 1) + 0.24 + 0.9;
-
-      /* ---------- Arche d'entrée ---------- */
-      const archBlue = std(0x1983bd, .6);
-      const pillarMat = new THREE.MeshStandardMaterial({ map: texPillar, roughness: .6 });
-      const headMat = new THREE.MeshStandardMaterial({ map: texHeader, roughness: .6 });
-      const headBackMat = new THREE.MeshStandardMaterial({ map: texHeaderBack, roughness: .6 });
-      const ARCH_Z = 21.2;
-      for (const side of [-1, 1]) {
-        const p = new THREE.Mesh(new THREE.BoxGeometry(0.7, 3.3, 0.6), [archBlue, archBlue, archBlue, archBlue, pillarMat, pillarMat]);
-        p.position.set(side * 2.95, 1.65, ARCH_Z); p.castShadow = true; p.receiveShadow = true; scene.add(p);
-      }
-      const head = new THREE.Mesh(new THREE.BoxGeometry(6.6, 0.9, 0.6), [archBlue, archBlue, archBlue, archBlue, headMat, headBackMat]);
-      head.position.set(0, 3.75, ARCH_Z); head.castShadow = true; scene.add(head);
-
-      /* ---------- Bar (avant le chapiteau, à gauche) ---------- */
+      /* ---------- Espace photo : backdrop logos + tapis noir, contre le mur du fond ---------- */
       {
         const g = new THREE.Group();
-        g.add(box(2.2, 1.05, 0.6, M.white, 0, 0.525, 0));
-        g.add(box(2.32, 0.04, 0.72, M.gloss, 0, 1.07, 0));
-        const panel = new THREE.Mesh(new THREE.PlaneGeometry(1.0, 0.8), new THREE.MeshStandardMaterial({ map: texBarPanel, roughness: .5 }));
-        panel.position.set(0, 0.56, 0.302); g.add(panel);
-        g.add(box(2.2, 0.03, 0.03, new THREE.MeshBasicMaterial({ color: 0x5cc0f2, toneMapped: false }), 0, 0.04, 0.31, false));
-        g.add(box(2.2, 0.9, 0.45, M.white, 0, 0.45, -1.05));
-        const bottleCols = [0x1f4a2a, 0x6b3b14, 0x2c2c30, 0xb9c7c9, 0x5a1820];
-        for (let i = 0; i < 14; i++) {
-          const mat = std(bottleCols[i % bottleCols.length], .25, .1);
-          const x = -0.95 + i * 0.146;
-          const b = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.24, 12), mat); b.position.set(x, 1.02, -1.05);
-          const n = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.02, 0.09, 8), mat); n.position.set(x, 1.185, -1.05);
-          b.castShadow = true; g.add(b, n);
-        }
-        const glassMat = new THREE.MeshStandardMaterial({ color: 0xdfefff, roughness: .05, transparent: true, opacity: .4 });
-        for (let i = 0; i < 6; i++) {
-          const gl = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.03, 0.12, 12), glassMat);
-          gl.position.set(-0.6 + i * 0.24, 1.15, 0.05); g.add(gl);
-        }
-        g.position.set(-4.6, 0, 24.4); g.rotation.y = Math.PI / 4;
-        scene.add(g);
-      }
-
-      /* ---------- Espace photo (avant le chapiteau, à droite) : mur logos + tapis noir ---------- */
-      {
-        const g = new THREE.Group();
-        const wall = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 2.4), new THREE.MeshStandardMaterial({ map: texBackdrop, roughness: .55 }));
-        wall.position.set(0, 1.25, 0); wall.castShadow = true;
-        const rear = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 2.4), std(0x2b2f38, .8)); rear.position.set(0, 1.25, -0.01); rear.rotation.y = Math.PI;
-        g.add(wall, rear);
+        const bd = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 2.4), new THREE.MeshStandardMaterial({ map: texBackdrop, roughness: .55 }));
+        bd.position.set(0, 1.25, 0); bd.castShadow = true;
+        const bk = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 2.4), std(0x2b2f38, .8)); bk.position.set(0, 1.25, -0.01); bk.rotation.y = Math.PI;
+        g.add(bd, bk);
         for (const s of [-1, 1]) { g.add(box(0.05, 2.5, 0.05, M.metal, s * 1.53, 1.25, -0.03)); g.add(box(0.05, 0.05, 0.7, M.metal, s * 1.53, 0.025, -0.03)); }
         g.add(box(3.1, 0.05, 0.05, M.metal, 0, 2.48, -0.03));
-        const carpet = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 2.0), M.carpetBlack);
-        carpet.rotation.x = -Math.PI / 2; carpet.position.set(0, 0.014, 1.05); carpet.receiveShadow = true; g.add(carpet);
-        g.position.set(4.6, 0, 24.4); g.rotation.y = -Math.PI / 4;
-        scene.add(g);
+        const bc = new THREE.Mesh(new THREE.PlaneGeometry(3.0, 2.0), std(0x101012, .95));
+        bc.rotation.x = -Math.PI / 2; bc.position.set(0, 0.014, 1.05); bc.receiveShadow = true; g.add(bc);
+        g.position.set(-4.5, 0, Z1 - 0.45); g.rotation.y = Math.PI; scene.add(g);
       }
 
+      /* ---------- Chaises à housse bleue : 4 blocs séparés par 3 allées ---------- */
+      const P = 0.52, AISLE = 1.1, CENTER = 1.6, ROWS = 15, ROW_PITCH = 0.9, FIRST_ROW_Z = -8.5;
+      const BLOCKS = [{ name: 'A', cols: 5, gap: AISLE }, { name: 'B', cols: 7, gap: CENTER }, { name: 'C', cols: 7, gap: AISLE }, { name: 'D', cols: 5, gap: 0 }];
+      const totalW = BLOCKS.reduce((s, b) => s + b.cols * P + b.gap, 0);
+      const total = BLOCKS.reduce((s, b) => s + b.cols * ROWS, 0);
+      const seatGeo = new THREE.BoxGeometry(0.46, 0.46, 0.48); seatGeo.translate(0, 0.23, 0);
+      const backGeo = new THREE.BoxGeometry(0.46, 0.44, 0.1); backGeo.translate(0, 0.68, 0.19);
+      const seats = new THREE.InstancedMesh(seatGeo, M.chair, total);
+      const backs = new THREE.InstancedMesh(backGeo, M.chair, total);
+      const mtx = new THREE.Matrix4();
+      let ci = 0, x0 = -totalW / 2;
+      for (const b of BLOCKS) {
+        for (let r = 0; r < ROWS; r++) {
+          const z = FIRST_ROW_Z + r * ROW_PITCH;
+          for (let c = 0; c < b.cols; c++) {
+            mtx.makeTranslation(x0 + (c + 0.5) * P, 0, z);
+            seats.setMatrixAt(ci, mtx); backs.setMatrixAt(ci, mtx); ci++;
+          }
+        }
+        b.cx = x0 + b.cols * P / 2;
+        counts.blocks.push({ name: b.name, n: b.cols * ROWS, cx: b.cx });
+        x0 += b.cols * P + b.gap;
+      }
+      counts.chairs = ci;
+      for (const m of [seats, backs]) { m.castShadow = true; m.receiveShadow = true; scene.add(m); }
+
+      /* ---------- Climatiseurs armoire blancs ---------- */
+      const acMats = [M.white, M.white, M.white, M.white, new THREE.MeshStandardMaterial({ map: texGrille, roughness: .5 }), M.white];
+      function airCon(x, z, ry) {
+        const m = new THREE.Mesh(new THREE.BoxGeometry(0.5, 1.75, 0.32), acMats);
+        m.position.set(x, 0.875, z); m.rotation.y = ry; m.castShadow = true; m.receiveShadow = true; scene.add(m);
+        counts.ac++;
+      }
+      const AC_R = RHW - 0.18, AC_F = Z0 + 0.18;
+      for (const z of [-9.0, 4.5]) airCon(AC_R, z, -Math.PI / 2);
+      for (const z of [-9.0, 4.5]) airCon(-AC_R, z, Math.PI / 2);
+      for (const x of [-6.2, 6.2]) airCon(x, AC_F, 0);
+
+      /* ---------- Roll-up ---------- */
+      const rollMat = new THREE.MeshStandardMaterial({ map: texRoll, roughness: .6 });
+      const rollBackMat = std(0xb9bec6, .6);
+      function rollUp(x, z, ry) {
+        const g = new THREE.Group();
+        g.add(box(0.86, 0.08, 0.24, M.metal, 0, 0.04, 0));
+        const fr = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 2.0), rollMat); fr.position.set(0, 1.1, 0.02); fr.castShadow = true;
+        const rr = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 2.0), rollBackMat); rr.position.set(0, 1.1, 0.015); rr.rotation.y = Math.PI;
+        g.add(fr, rr, box(0.82, 0.03, 0.03, M.metal, 0, 2.11, 0.02));
+        g.position.set(x, 0, z); g.rotation.y = ry; scene.add(g);
+        counts.roll++;
+      }
+      for (const z of [-10.0, -1.8, 4.8]) rollUp(8.9, z, -Math.PI / 2);
+      for (const z of [-10.0, -1.8, 4.8]) rollUp(-8.9, z, Math.PI / 2);
+
       /* ---------- Fiche : quantités comptées dans le modèle ---------- */
-      const fmt = o => `${o.L + o.R} (${o.L} + ${o.R})`;
-      document.getElementById('sChairs').textContent = `${fmt(counts.chairs)} · ${PER_ROW} par rangée · ${ROWS} rangées`;
-      document.getElementById('sTables').textContent = `${fmt(counts.tables)} · groupés en rectangle`;
-      document.getElementById('sAC').textContent = fmt(counts.ac);
-      document.getElementById('sRoll').textContent = fmt(counts.roll);
+      document.getElementById('sChairs').textContent = `${counts.chairs} · 4 blocs de ${BLOCKS.map(b => b.cols).join(' / ')} places · ${ROWS} rangées`;
+      document.getElementById('sAC').textContent = String(counts.ac);
+      document.getElementById('sRoll').textContent = String(counts.roll);
 
       /* ---------- Étiquettes ---------- */
       const tagsEl = document.getElementById('tags');
       const TAGS = [
-        ['Écran LED 4 × 3 m', V(0, 3.85, -19.7)],
-        ['Estrade 5 × 3 m', V(-1.2, 0.95, -17.4)],
-        ['Pupitre', V(1.7, 1.95, -17.6)],
-        [`${counts.chairs.L} chaises`, V(-1.5, 1.5, -4.6)],
-        [`${counts.chairs.R} chaises`, V(1.5, 1.5, -4.6)],
-        ['Mange-debout ×4', V(-1.5, 1.5, 12.0)],
-        ['Mange-debout ×4', V(1.5, 1.5, 12.0)],
-        ['Climatiseur', V(-2.31, 2.05, AC_Z[0])],
-        ['Roll-up', V(2.36, 2.4, ROLL_Z[0])],
-        ["Arche d'entrée", V(0, 4.5, ARCH_Z), true],
-        ['Bar', V(-4.6, 1.85, 24.4), true],
-        ['Espace photo · tapis noir', V(4.6, 2.8, 24.4), true],
+        ['Écran LED 4 × 3 m', V(0, 3.85, Z0 + 0.3)],
+        ['Estrade 5 × 3 m', V(-1.2, 0.95, Z0 + 3.1)],
+        ['Vidéoprojecteur', V(0, 3.95, -3)],
+        ['Enceinte', V(4.6, 2.45, Z0 + 0.7)],
+        ['Pupitre', V(1.7, 1.95, Z0 + 2.4)],
+        ['Backdrop photo', V(-4.5, 2.8, Z1 - 0.6)],
+        ['Climatiseur', V(AC_R, 2.05, -9.0)],
+        ['Roll-up', V(8.9, 2.4, -1.8)],
+        ['Double porte', V(RHW - 0.1, 2.9, 10.0)],
+        ['Sol marbre', V(10.1, 0.9, -3)],
+        ['Pilier bois', V(-9.9, 4.0, 1.5)],
+        ['Lustre à globes', V(6, 3.9, -3)],
+        ...counts.blocks.map(b => [`Bloc ${b.name} · ${b.n} chaises`, V(b.cx, 1.5, -1)]),
       ].map(([text, pos, outside]) => {
         const el = document.createElement('div'); el.className = 'tag'; el.textContent = text; el.hidden = true;
         tagsEl.appendChild(el); return { el, pos, outside: !!outside };
@@ -1020,9 +924,9 @@
       const proj = new THREE.Vector3();
       function updateTags(w, h) {
         const c = camera.position;
-        const inside = mode === 'full' && Math.abs(c.x) < HW && c.z > Z0 && c.z < Z1 && c.y < RIDGE;
+        const inside = mode === 'full' && Math.abs(c.x) < RHW && c.z > Z0 && c.z < Z1 && c.y < CEIL;
         for (const t of TAGS) {
-          if (!showTags || (inside && t.outside) || (mode === 'full' && c.distanceTo(t.pos) > 18)) { t.el.hidden = true; continue; }
+          if (!showTags || (inside && t.outside) || (mode === 'full' && c.distanceTo(t.pos) > 22)) { t.el.hidden = true; continue; }
           proj.copy(t.pos).project(camera);
           if (proj.z > 1 || proj.z < -1 || Math.abs(proj.x) > 1.05 || Math.abs(proj.y) > 1.05) { t.el.hidden = true; continue; }
           t.el.hidden = false;
@@ -1030,7 +934,7 @@
         }
       }
 
-      /* ---------- Mode d'affichage du chapiteau ---------- */
+      /* ---------- Mode d'affichage de la salle ---------- */
       let mode = 'cut';
       const btnFull = document.getElementById('modeFull'), btnCut = document.getElementById('modeCut');
       function setMode(m) { mode = m; btnFull.setAttribute('aria-pressed', m === 'full'); btnCut.setAttribute('aria-pressed', m === 'cut'); }
@@ -1038,29 +942,30 @@
       btnCut.onclick = () => setMode('cut');
       function applyCut() {
         const c = camera.position, cut = mode === 'cut';
-        roof.visible = !cut; gables.visible = !cut;
-        wallL.visible = !(cut && c.x < -HW);
-        wallR.visible = !(cut && c.x > HW);
-        back.visible = !(cut && c.z < Z0);
+        roof.visible = !cut;
+        wallL.visible = !(cut && c.x < -RHW);
+        wallR.visible = !(cut && c.x > RHW);
+        front.visible = !(cut && c.z < Z0);
+        rear.visible = !(cut && c.z > Z1);
       }
       document.getElementById('tagsToggle').onchange = e => { showTags = e.target.checked; };
 
       /* ---------- Vues ---------- */
       function topView() {
         const a = camera.aspect, k = 2 * Math.tan(THREE.MathUtils.degToRad(22.5));
-        if (a >= 1) { const d = Math.max(64 / (k * a), 18 / k); return { pos: [0.02, d, 3], tgt: [0, 0, 3] }; }
-        const d = Math.max(64 / k, 18 / (k * a)); return { pos: [0, d, 3.02], tgt: [0, 0, 3] };
+        const d = Math.max(33 / k, 27 / (k * a));
+        return { pos: [0, d, 0.02], tgt: [0, 0, 0] };
       }
       const VIEWS = {
-        ensemble: { label: "Vue d'ensemble", mode: 'cut', pos: [17, 18, 31], tgt: [0, 0, 2] },
+        ensemble: { label: "Vue d'ensemble", mode: 'cut', pos: [24, 20, 36], tgt: [0, 0, 0] },
         dessus: { label: 'Plan (dessus)', mode: 'cut', fn: topView },
-        entree: { label: 'Entrée et arche', mode: 'full', pos: [0, 2.3, 35], tgt: [0, 1.9, 14] },
-        accueil: { label: 'Bar et espace photo', mode: 'full', pos: [0, 4.6, 34.5], tgt: [0, 1.0, 23.2] },
-        allee: { label: "Dans l'allée", mode: 'full', pos: [0, 1.65, 17.5], tgt: [0, 1.5, -19] },
-        estrade: { label: "Face à l'estrade", mode: 'full', pos: [0, 2.0, -9.5], tgt: [0, 1.7, -19.5] },
-        public: { label: "Depuis l'estrade", mode: 'full', pos: [0, 2.45, -18.4], tgt: [0, 0.8, 6] },
-        petite: { label: 'Petite allée', mode: 'full', pos: [0.4, 2.2, GAP1_Z + 3.4], tgt: [-2.2, 0.9, GAP1_Z - 0.2] },
-        cote: { label: 'Côté (en coupe)', mode: 'cut', pos: [27, 10, -1], tgt: [0, 0.6, -1] },
+        fond: { label: 'Depuis le fond de salle', mode: 'full', pos: [0.3, 1.75, 12.8], tgt: [0, 1.6, -14] },
+        allee: { label: 'Allée centrale', mode: 'full', pos: [0, 1.65, 6], tgt: [0, 1.5, -14] },
+        estrade: { label: "Face à l'estrade", mode: 'full', pos: [0, 2.0, -6.4], tgt: [0, 1.8, -14] },
+        public: { label: "Depuis l'estrade", mode: 'full', pos: [0, 2.4, -11.2], tgt: [0, 0.8, 6] },
+        portes: { label: 'Mur des portes', mode: 'full', pos: [0.3, 1.8, -1], tgt: [11.5, 1.5, 3] },
+        plafond: { label: 'Plafond et lustres', mode: 'full', pos: [0.3, 1.7, 10], tgt: [0, 3.6, -4] },
+        cote: { label: 'Côté (en coupe)', mode: 'cut', pos: [32, 9, 0], tgt: [0, 0.6, 0] },
       };
       const viewsEl = document.getElementById('views');
       const chip = document.getElementById('viewchip');
@@ -1087,14 +992,14 @@
         markActive(key);
       }
 
-      /* ---------- Visite animée : de l'accueil jusqu'à l'estrade ---------- */
-      const tourCurve = new THREE.CatmullRomCurve3([V(7, 3.2, 33.5), V(2.6, 2.2, 29), V(0, 1.7, 24.5), V(0, 1.7, 20.5), V(0, 1.7, 12), V(0, 1.7, 2), V(0, 1.7, -6), V(0, 1.85, -11.5)]);
-      const SCREEN_PT = V(0, 2.1, -19.7);
+      /* ---------- Visite animée : du fond de salle jusqu'à l'écran ---------- */
+      const tourCurve = new THREE.CatmullRomCurve3([V(8, 2.3, 12.8), V(3.5, 2.0, 11.5), V(0.3, 1.7, 9.5), V(0, 1.7, 3), V(0, 1.7, -3), V(0, 1.8, -6.6)]);
+      const SCREEN_PT = V(0, 2.1, Z0 + 0.3);
       const tourBtn = document.getElementById('tourBtn');
       function startTour() {
         if (reduceMotion) { goTo('allee'); return; }
         tween = null; setMode('full');
-        tour = { t0: performance.now(), dur: 24000 };
+        tour = { t0: performance.now(), dur: 20000 };
         tourBtn.textContent = 'Arrêter la visite';
         markActive(null);
       }
